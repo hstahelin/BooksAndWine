@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #171313;
+  --paper: #f4efe4;
+  --wine: #681f2c;
+  --wine-dark: #3b1119;
+  --gold: #d5aa62;
+  --line: rgba(23, 19, 19, 0.2);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: Arial, Helvetica, sans-serif; }
+a { color: inherit; text-decoration: none; }
+
+.site-header { align-items: center; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; min-height: 84px; padding: 14px clamp(22px, 4vw, 64px); }
+.brand { align-items: center; display: inline-flex; gap: 12px; }
+.brand img { height: 52px; object-fit: contain; width: 52px; }
+.brand span { font-family: Georgia, "Times New Roman", serif; font-size: 1.25rem; letter-spacing: -0.035em; }
+.brand i { color: var(--wine); font-weight: 400; }
+nav { align-items: center; display: flex; gap: clamp(18px, 3vw, 44px); }
+nav a { font-size: 0.82rem; letter-spacing: 0.04em; }
+.nav-note { align-items: center; border-bottom: 1px solid var(--ink); display: inline-flex; gap: 8px; padding: 10px 0 8px; }
+
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(110px, 15vw); min-height: min(760px, calc(100vh - 84px)); position: relative; }
+.hero::before { background: radial-gradient(circle at 25% 0%, rgba(213, 170, 98, 0.14), transparent 34%), linear-gradient(135deg, transparent 0 72%, rgba(104, 31, 44, 0.05) 72% 100%); content: ""; inset: 0; pointer-events: none; position: absolute; }
+.hero-kicker { display: flex; font-size: 0.72rem; gap: 24px; left: clamp(22px, 4vw, 64px); letter-spacing: 0.13em; position: absolute; text-transform: uppercase; top: 38px; }
+.hero-copy { align-self: center; padding: 112px clamp(22px, 7vw, 112px) 80px; position: relative; }
+.eyebrow, .section-label, .pairing-type, .pairing-meta { font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; }
+.eyebrow { color: var(--wine); margin: 0 0 24px; }
+h1, h2, h3, blockquote { font-family: Georgia, "Times New Roman", serif; }
+h1 { font-size: clamp(4rem, 9.2vw, 9rem); font-weight: 400; letter-spacing: -0.075em; line-height: 0.83; margin: 0; }
+h1 em { color: var(--wine); font-weight: 400; }
+.lede { font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.15rem, 1.8vw, 1.45rem); line-height: 1.55; margin: 46px 0 0 auto; max-width: 510px; }
+.hero-side { align-items: center; background: var(--wine-dark); color: var(--paper); display: flex; flex-direction: column; justify-content: space-between; padding: 34px 0 32px; position: relative; }
+.vertical-word { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; writing-mode: vertical-rl; }
+.edition-mark { color: var(--gold); font-family: Georgia, "Times New Roman", serif; font-size: clamp(2rem, 4vw, 4rem); letter-spacing: -0.09em; transform: rotate(-90deg); white-space: nowrap; }
+.edition-mark span { font-style: italic; }
+.round-link { align-items: center; border: 1px solid rgba(244, 239, 228, 0.6); border-radius: 50%; display: flex; height: 60px; justify-content: center; transition: background 180ms ease, color 180ms ease; width: 60px; }
+.round-link:hover, .round-link:focus-visible { background: var(--paper); color: var(--wine-dark); }
+
+.manifesto { border-bottom: 1px solid var(--line); border-top: 1px solid var(--line); display: grid; gap: 36px; grid-template-columns: 1fr 3fr; padding: 96px clamp(22px, 7vw, 112px); }
+.section-label { color: var(--wine); margin: 0; }
+.manifesto-copy { font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.8rem, 3.8vw, 3.7rem); letter-spacing: -0.035em; line-height: 1.12; margin: 0; }
+.manifesto-copy strong { color: var(--wine); font-style: italic; font-weight: 400; }
+
+.pairings { background: var(--ink); color: var(--paper); display: grid; gap: 72px; grid-template-columns: minmax(240px, 0.8fr) minmax(0, 1.7fr); padding: 110px clamp(22px, 7vw, 112px); }
+.pairings .section-label { color: var(--gold); }
+.section-heading h2 { font-size: clamp(2.7rem, 5vw, 5.2rem); font-weight: 400; letter-spacing: -0.055em; line-height: 0.98; margin: 28px 0 0; }
+.pairing-list { border-top: 1px solid rgba(244, 239, 228, 0.28); }
+.pairing { border-bottom: 1px solid rgba(244, 239, 228, 0.28); display: grid; gap: 26px; grid-template-columns: 36px 1fr 32px; padding: 30px 0; }
+.pairing-number { color: var(--gold); font-family: Georgia, serif; font-style: italic; }
+.pairing-type { color: var(--gold); margin: 0 0 13px; }
+.pairing h3 { font-size: clamp(1.5rem, 2.4vw, 2.35rem); font-weight: 400; letter-spacing: -0.035em; margin: 0; }
+.pairing-copy { color: rgba(244, 239, 228, 0.72); font-size: 1rem; line-height: 1.6; margin: 16px 0; max-width: 600px; }
+.pairing-meta { color: rgba(244, 239, 228, 0.56); line-height: 1.5; margin: 0; }
+.pairing-arrow { color: var(--gold); margin-top: 22px; }
+
+.closing-note { padding: 110px clamp(22px, 7vw, 112px) 128px; text-align: center; }
+.closing-note blockquote { font-size: clamp(2.4rem, 6vw, 6.4rem); letter-spacing: -0.06em; line-height: 0.98; margin: 42px auto 0; max-width: 1100px; }
+footer { align-items: end; border-top: 1px solid var(--line); display: grid; font-size: 0.78rem; gap: 28px; grid-template-columns: 1fr 1fr auto; line-height: 1.5; padding: 36px clamp(22px, 4vw, 64px); }
+footer p { margin: 0; }
+.footer-brand img { height: 42px; width: 42px; }
+
+@media (max-width: 760px) {
+  .site-header { min-height: 72px; }
+  .brand span { font-size: 1.08rem; }
+  .brand img { height: 42px; width: 42px; }
+  nav > a:not(.nav-note) { display: none; }
+  .hero { grid-template-columns: 1fr 72px; min-height: 700px; }
+  .hero-copy { padding: 126px 22px 68px; }
+  h1 { font-size: clamp(3.9rem, 18vw, 6.1rem); }
+  .lede { margin-top: 36px; }
+  .hero-kicker { gap: 13px; }
+  .hero-side { padding-inline: 6px; }
+  .manifesto { grid-template-columns: 1fr; padding-block: 74px; }
+  .pairings { grid-template-columns: 1fr; padding-block: 80px; }
+  .closing-note { padding-block: 80px 92px; }
+  footer { align-items: start; grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition-duration: 0.01ms !important; }
+}
