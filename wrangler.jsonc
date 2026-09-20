@@ -12,6 +12,7 @@
     {
       "binding": "DB",
       "database_name": "books-and-wine-subscribers",
+      "database_id": "0e3be620-c6cd-47ad-9073-90cefcd13af3",
       "migrations_dir": "./migrations"
     }
   ],
