@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Books & Wine — A journal for considered evenings",
+  title: "Books & Wine — Coming soon",
   description:
-    "Stories worth staying up for, paired with bottles that make the conversation last a little longer.",
+    "A new journal for thoughtful reads, memorable bottles, and the conversations that connect them.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",

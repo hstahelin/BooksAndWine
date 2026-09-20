@@ -1,6 +1,8 @@
 # Books & Wine
 
-A digital journal about books, wine, and the conversations that connect them.
+A coming-soon site for a digital journal about books, wine, and the conversations that connect them.
+
+Email signups are stored in Cloudflare D1 through the `DB` binding. The `subscribers` table records the normalized email address, consent timestamp, and signup source. Duplicate addresses are ignored.
 
 ## Development
 
