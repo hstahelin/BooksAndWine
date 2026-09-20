@@ -30,3 +30,22 @@ npm run deploy
 
 Cloudflare can also connect directly to the GitHub repository and deploy the
 `main` branch automatically.
+
+## Export subscribers
+
+Export all production subscribers to `subscribers.csv`:
+
+```bash
+npm run subscribers:export
+```
+
+Use a different output path, or replace an existing export:
+
+```bash
+npm run subscribers:export -- --output exports/subscribers.csv
+npm run subscribers:export -- --force
+```
+
+Run `npx wrangler login` first if the Cloudflare CLI asks you to authenticate.
+The default `subscribers.csv` file is ignored by Git because it contains email
+addresses.

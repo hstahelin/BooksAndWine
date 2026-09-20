@@ -13,7 +13,8 @@
     "lint": "eslint src worker vite.config.ts",
     "cf:typegen": "wrangler types",
     "db:migrate:local": "wrangler d1 migrations apply books-and-wine-subscribers --local",
-    "db:migrate:remote": "wrangler d1 migrations apply books-and-wine-subscribers --remote"
+    "db:migrate:remote": "wrangler d1 migrations apply books-and-wine-subscribers --remote",
+    "subscribers:export": "node scripts/export-subscribers.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

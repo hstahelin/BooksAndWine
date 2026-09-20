@@ -45,3 +45,6 @@ next-env.d.ts
 /.codex/
 /outputs/
 /work/
+
+# Subscriber exports contain personal data and must not be committed.
+/subscribers*.csv
