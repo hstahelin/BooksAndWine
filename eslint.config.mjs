@@ -14,6 +14,13 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
   ]),
   {
+    files: ["src/**/*.{ts,tsx}"],
+    rules: {
+      // This is a Vite app, so Next.js image components are not available.
+      "@next/next/no-img-element": "off",
+    },
+  },
+  {
     files: ["components/ui/**/*.{ts,tsx}", "hooks/use-mobile.ts"],
     rules: {
       // These files are vendored verbatim from shadcn@4.17.0. Keep the

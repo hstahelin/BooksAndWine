@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS subscribers (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  email TEXT NOT NULL UNIQUE,
+  consented_at INTEGER NOT NULL DEFAULT (unixepoch()),
+  source TEXT NOT NULL DEFAULT 'coming-soon'
+);
