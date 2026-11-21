@@ -6,7 +6,6 @@ export type Pairing = {
   wine: string;
   paragraphs: string[];
   closing: string[];
-  signature?: string;
 };
 
 export const pairings: Pairing[] = [
@@ -26,7 +25,6 @@ export const pairings: Pairing[] = [
       "I hope you enjoy this pairing and come back for more!",
       "It's my pleasure to share my 2 passions.",
     ],
-    signature: "Ana Reinemer",
   },
   {
     slug: "the-book-thief",
@@ -62,7 +60,6 @@ export const pairings: Pairing[] = [
       "I hope you enjoy this pairing and come back for more!",
       "It's my pleasure to share my 2 passions.",
     ],
-    signature: "Ana Reinemer",
   },
 ];
 

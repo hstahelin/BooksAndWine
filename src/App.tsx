@@ -86,15 +86,40 @@ function Page({ children }: { children: ReactNode }) {
   return <main><Header />{children}<Footer /></main>;
 }
 
+function PairingEmblem({ compact = false }: { compact?: boolean }) {
+  return (
+    <svg className={`pairing-emblem ${compact ? "is-compact" : ""}`} viewBox="0 0 220 160" role="img" aria-label="A book beside a wine glass">
+      <g className="emblem-book">
+        <path d="M22 22h67c12 0 21 9 21 21v91H43c-12 0-21-9-21-21V22Z" />
+        <path d="M110 43c0-12 9-21 21-21h35v112h-35c-12 0-21 9-21 21V43Z" />
+        <path d="M38 47h52M38 67h42" />
+      </g>
+      <g className="emblem-wine">
+        <path d="M146 30h51l-5 44c-2 19-11 29-21 29s-19-10-21-29l-4-44Z" />
+        <path d="M171 103v36M153 140h36M151 67h42" />
+      </g>
+    </svg>
+  );
+}
+
 function HomePage() {
   return (
     <Page>
       <section className="hero feature-hero" id="top">
         <div className="hero-kicker"><span>Featured pairing</span><span>Issue No. 01</span></div>
         <div className="hero-copy feature-copy">
-          <p className="eyebrow">{featuredPairing.wine}</p>
-          <h1>The Golden<br /><em>Compass.</em></h1>
-          <p className="feature-byline">By: {featuredPairing.author}</p>
+          <p className="eyebrow">Book &amp; wine pairing</p>
+          <div className="feature-pairing-grid">
+            <div className="feature-book">
+              <h1>The Golden<br /><em>Compass.</em></h1>
+              <p className="feature-byline">By: {featuredPairing.author}</p>
+            </div>
+            <div className="feature-wine">
+              <PairingEmblem compact />
+              <span>Wine pairing</span>
+              <strong>{featuredPairing.wine}</strong>
+            </div>
+          </div>
           <p className="lede">{featuredPairing.paragraphs[0]}</p>
           <a className="text-link" href={`/pairings/${featuredPairing.slug}`}>Read the pairing <ArrowUpRight size={18} aria-hidden="true" /></a>
         </div>
@@ -129,9 +154,17 @@ function PairingCard({ pairing }: { pairing: Pairing }) {
     <article className="journal-card">
       <div className="card-number">{pairing.number}</div>
       <p className="pairing-label">Book &amp; wine pairing</p>
-      <h2>{pairing.title}</h2>
-      <p className="card-byline">By: {pairing.author}</p>
-      <p className="card-wine">Wine Pairing: {pairing.wine}</p>
+      <div className="card-pairing-grid">
+        <div className="card-book">
+          <h2>{pairing.title}</h2>
+          <p className="card-byline">By: {pairing.author}</p>
+        </div>
+        <div className="card-wine">
+          <PairingEmblem compact />
+          <span>Wine pairing</span>
+          <strong>{pairing.wine}</strong>
+        </div>
+      </div>
       <p className="card-copy">{pairing.paragraphs[0]}</p>
       <a className="text-link" href={`/pairings/${pairing.slug}`}>Read the pairing <ArrowUpRight size={18} aria-hidden="true" /></a>
     </article>
@@ -163,20 +196,37 @@ function PairingPage({ pairing }: { pairing: Pairing }) {
         <header className="article-masthead">
           <a className="back-link" href="/journal"><ArrowLeft size={17} aria-hidden="true" /> Back to the journal</a>
           <div className="article-number">{pairing.number}</div>
-          <p className="section-label">Book &amp; wine pairing</p>
-          <h1>{pairing.title}</h1>
-          <div className="article-meta"><p>By: {pairing.author}</p><p>Wine Pairing: {pairing.wine}</p></div>
+          <div className="article-pairing-grid">
+            <div className="article-book-panel">
+              <p className="section-label">The book</p>
+              <h1>{pairing.title}</h1>
+              <p className="article-byline">By: {pairing.author}</p>
+            </div>
+            <div className="article-wine-panel">
+              <PairingEmblem />
+              <p className="section-label">The wine</p>
+              <h2>{pairing.wine}</h2>
+            </div>
+          </div>
         </header>
         <div className="article-layout">
-          <aside aria-hidden="true"><div className="article-mark">B<span>&amp;</span>W</div><span>Read slowly</span></aside>
           <div className="article-body">
             {pairing.paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
           </div>
+          <aside className="article-visual" aria-label="Book and wine pairing visual">
+            <div className="visual-frame">
+              <span className="visual-number">{pairing.number}</span>
+              <PairingEmblem />
+              <p>{pairing.title}</p>
+              <i>&amp;</i>
+              <strong>{pairing.wine}</strong>
+            </div>
+          </aside>
         </div>
         <div className="article-closing">
           <div>{pairing.closing.map((line) => <p key={line}>{line}</p>)}</div>
-          {pairing.signature ? <p className="signature">{pairing.signature}</p> : null}
-          <a href="/journal">booksandwine.ca</a>
+          <p className="signature">Ana Reinemer</p>
+          <a href="/">booksandwine.ca</a>
         </div>
       </article>
     </Page>
