@@ -98,7 +98,10 @@ h1 em { color: var(--wine); font-weight: 400; }
 .card-copy { color: rgba(244, 239, 228, 0.72); font-size: 1rem; line-height: 1.65; margin: 40px 0 0; max-width: 620px; }
 .journal-card .text-link { color: var(--gold); }
 .featured-return { padding: 90px clamp(22px, 7vw, 112px); }
-.featured-return > a { align-items: center; border-bottom: 1px solid var(--line); display: flex; font-family: Georgia, serif; font-size: clamp(2.4rem, 5vw, 5.8rem); justify-content: space-between; letter-spacing: -0.055em; margin-top: 30px; padding-bottom: 26px; }
+.featured-return > a { align-items: end; border-bottom: 1px solid var(--line); display: grid; gap: clamp(24px, 4vw, 64px); grid-template-columns: minmax(0, 3fr) minmax(220px, 2fr) auto; margin-top: 30px; padding-bottom: 30px; }
+.featured-book { font-family: Georgia, serif; font-size: clamp(2.4rem, 5vw, 5.8rem); letter-spacing: -0.055em; line-height: 0.95; }
+.featured-wine-name { border-left: 1px solid var(--line); color: var(--wine); display: flex; flex-direction: column; font-family: Georgia, serif; font-size: clamp(1.45rem, 2.6vw, 2.8rem); letter-spacing: -0.035em; line-height: 1.02; padding-left: clamp(20px, 3vw, 44px); }
+.featured-wine-name small { color: var(--ink); font-family: Arial, Helvetica, sans-serif; font-size: 0.66rem; font-weight: 400; letter-spacing: 0.14em; margin-bottom: 13px; text-transform: uppercase; }
 
 .article-masthead { background: var(--wine-dark); color: var(--paper); min-height: 620px; padding: 42px clamp(22px, 7vw, 112px) 82px; position: relative; }
 .back-link { align-items: center; display: inline-flex; font-size: 0.76rem; gap: 9px; letter-spacing: 0.08em; text-transform: uppercase; }
@@ -123,6 +126,13 @@ h1 em { color: var(--wine); font-weight: 400; }
 .visual-frame p, .visual-frame strong { display: block; font-family: Georgia, serif; font-size: clamp(1.55rem, 2.5vw, 2.8rem); font-weight: 400; letter-spacing: -0.04em; line-height: 1.04; margin: 80px 0 0; }
 .visual-frame i { color: var(--gold); display: block; font-family: Georgia, serif; font-size: 3rem; margin: 18px 0; }
 .visual-frame strong { margin-top: 0; }
+.article-navigation { background: var(--paper); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.entry-nav { display: flex; flex-direction: column; min-height: 230px; padding: 52px clamp(22px, 5vw, 78px); }
+.entry-nav + .entry-nav, .article-navigation > span + .entry-nav { border-left: 1px solid var(--line); }
+.entry-nav > span { align-items: center; color: var(--wine); display: flex; font-size: 0.7rem; gap: 9px; letter-spacing: 0.14em; text-transform: uppercase; }
+.entry-nav strong { font-family: Georgia, serif; font-size: clamp(1.8rem, 3vw, 3.4rem); font-weight: 400; letter-spacing: -0.045em; line-height: 1; margin-top: 28px; }
+.entry-nav small { color: rgba(23, 19, 19, 0.64); font-family: Georgia, serif; font-size: 1rem; line-height: 1.35; margin-top: 13px; }
+.next-entry { align-items: flex-end; text-align: right; }
 .article-closing { align-items: end; background: var(--ink); color: var(--paper); display: grid; gap: 34px; grid-template-columns: 1fr auto auto; padding: 74px clamp(22px, 7vw, 112px); }
 .article-closing p { margin: 5px 0; }
 .article-closing > div { font-family: Georgia, serif; font-size: clamp(1.2rem, 2vw, 1.7rem); line-height: 1.4; }
@@ -163,6 +173,8 @@ h1 em { color: var(--wine); font-weight: 400; }
   .card-pairing-grid { grid-template-columns: 1fr; }
   .card-wine { border-left: 0; border-top: 1px solid rgba(244, 239, 228, 0.26); padding: 24px 0 0; }
   .card-wine > span { margin: 0 0 10px; }
+  .featured-return > a { align-items: start; grid-template-columns: 1fr auto; }
+  .featured-wine-name { border-left: 0; border-top: 1px solid var(--line); grid-column: 1 / -1; grid-row: 2; padding: 22px 0 0; }
   .article-masthead { min-height: 560px; padding-bottom: 60px; }
   .article-pairing-grid { gap: 48px; grid-template-columns: 1fr; margin-top: 76px; }
   .article-book-panel { padding-right: 0; }
@@ -171,6 +183,11 @@ h1 em { color: var(--wine); font-weight: 400; }
   .article-body { padding: 70px 22px 76px; }
   .article-body p { font-size: 1.16rem; line-height: 1.68; }
   .article-visual { display: none; }
+  .article-navigation { grid-template-columns: 1fr; }
+  .article-navigation > span:empty { display: none; }
+  .entry-nav { min-height: 190px; }
+  .entry-nav + .entry-nav, .article-navigation > span + .entry-nav { border-left: 0; border-top: 1px solid var(--line); }
+  .next-entry { align-items: flex-start; text-align: left; }
   .article-closing { align-items: start; grid-template-columns: 1fr; }
   .site-footer { align-items: start; grid-template-columns: 1fr; }
 }

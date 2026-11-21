@@ -10,25 +10,8 @@ export type Pairing = {
 
 export const pairings: Pairing[] = [
   {
-    slug: "the-golden-compass",
-    number: "01",
-    title: "The Golden Compass",
-    author: "Philip Pullman",
-    wine: "Langhe Nebbiolo from Piedmont",
-    paragraphs: [
-      "The Golden Compass follows Lyra Belacqua, a fierce, curious girl growing up among Oxford’s scholars. Her dæmon, Pantalaimon, is her soul in animal form and can change shape as quickly as she changes her mind. When her friend Roger disappears, Lyra’s adventures eventually lead her to the frozen North in search of him. Along the way, she learns to read a golden instrument called an alethiometer (hence the book name The Golden Compass) and begins to uncover the secrets of a mysterious substance called Dust.",
-      "What drew me to this Nebbiolo was Lyra herself. I wanted a red with a little mischief in it for the girl who scrambles over the rooftops of Oxford with Pantalaimon.",
-      "You know the saying about judging a book by its cover? I’d say the same about judging Nebbiolo by its colour. Hold it up to the light, and you can see right through that pale ruby. Give it a swirl and look for rose petals and red cherries. There’s a lovely tartness to the fruit, like biting into a cherry just before it’s fully ripe. For such a pale wine, it has a surprising fullness in the mouth, and once the fruit fades, a little spice lingers.",
-      "That’s where I find Lyra in the glass. On those Oxford rooftops, you might take her for a girl with a talent for getting into trouble. It’s when Roger needs her that you see how much courage there is in her, too.",
-    ],
-    closing: [
-      "I hope you enjoy this pairing and come back for more!",
-      "It's my pleasure to share my 2 passions.",
-    ],
-  },
-  {
     slug: "the-book-thief",
-    number: "02",
+    number: "01",
     title: "The Book Thief",
     author: "Markus Zusak",
     wine: "Pinot Noir from Burgundy",
@@ -47,7 +30,7 @@ export const pairings: Pairing[] = [
   },
   {
     slug: "mrs-dalloway",
-    number: "03",
+    number: "02",
     title: "Mrs. Dalloway",
     author: "Virgina Woolf",
     wine: "Pinot Grigio from Lombardy or Veneto",
@@ -61,10 +44,35 @@ export const pairings: Pairing[] = [
       "It's my pleasure to share my 2 passions.",
     ],
   },
+  {
+    slug: "the-golden-compass",
+    number: "03",
+    title: "The Golden Compass",
+    author: "Philip Pullman",
+    wine: "Langhe Nebbiolo from Piedmont",
+    paragraphs: [
+      "The Golden Compass follows Lyra Belacqua, a fierce, curious girl growing up among Oxford’s scholars. Her dæmon, Pantalaimon, is her soul in animal form and can change shape as quickly as she changes her mind. When her friend Roger disappears, Lyra’s adventures eventually lead her to the frozen North in search of him. Along the way, she learns to read a golden instrument called an alethiometer (hence the book name The Golden Compass) and begins to uncover the secrets of a mysterious substance called Dust.",
+      "What drew me to this Nebbiolo was Lyra herself. I wanted a red with a little mischief in it for the girl who scrambles over the rooftops of Oxford with Pantalaimon.",
+      "You know the saying about judging a book by its cover? I’d say the same about judging Nebbiolo by its colour. Hold it up to the light, and you can see right through that pale ruby. Give it a swirl and look for rose petals and red cherries. There’s a lovely tartness to the fruit, like biting into a cherry just before it’s fully ripe. For such a pale wine, it has a surprising fullness in the mouth, and once the fruit fades, a little spice lingers.",
+      "That’s where I find Lyra in the glass. On those Oxford rooftops, you might take her for a girl with a talent for getting into trouble. It’s when Roger needs her that you see how much courage there is in her, too.",
+    ],
+    closing: [
+      "I hope you enjoy this pairing and come back for more!",
+      "It's my pleasure to share my 2 passions.",
+    ],
+  },
 ];
 
-export const featuredPairing = pairings[0];
+export const featuredPairing = pairings[pairings.length - 1];
 
 export function getPairing(slug: string) {
   return pairings.find((pairing) => pairing.slug === slug);
+}
+
+export function getAdjacentPairings(slug: string) {
+  const index = pairings.findIndex((pairing) => pairing.slug === slug);
+  return {
+    previous: index > 0 ? pairings[index - 1] : undefined,
+    next: index >= 0 && index < pairings.length - 1 ? pairings[index + 1] : undefined,
+  };
 }

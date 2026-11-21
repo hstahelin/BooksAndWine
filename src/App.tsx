@@ -1,6 +1,6 @@
 import { FormEvent, ReactNode, useState } from "react";
 import { ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
-import { featuredPairing, getPairing, pairings, type Pairing } from "./pairings";
+import { featuredPairing, getAdjacentPairings, getPairing, pairings, type Pairing } from "./pairings";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
@@ -90,7 +90,7 @@ function HomePage() {
   return (
     <Page>
       <section className="hero feature-hero" id="top">
-        <div className="hero-kicker"><span>Featured pairing</span><span>Issue No. 01</span></div>
+        <div className="hero-kicker"><span>Featured pairing</span><span>Issue No. {featuredPairing.number}</span></div>
         <div className="hero-copy feature-copy">
           <p className="eyebrow">Book &amp; wine pairing</p>
           <div className="feature-pairing-grid">
@@ -161,17 +161,23 @@ function JournalPage() {
         <p>Thoughtful books, memorable bottles, and the conversations that begin when the two meet.</p>
       </section>
       <section className="journal-grid" aria-label="Pairings">
-        {pairings.slice(1).map((pairing) => <PairingCard pairing={pairing} key={pairing.slug} />)}
+        {pairings.filter((pairing) => pairing.slug !== featuredPairing.slug).map((pairing) => <PairingCard pairing={pairing} key={pairing.slug} />)}
       </section>
       <section className="featured-return">
         <p className="section-label">Featured</p>
-        <a href={`/pairings/${featuredPairing.slug}`}><span>{featuredPairing.title}</span><ArrowUpRight size={28} aria-hidden="true" /></a>
+        <a href={`/pairings/${featuredPairing.slug}`}>
+          <span className="featured-book">{featuredPairing.title}</span>
+          <span className="featured-wine-name"><small>Wine pairing</small>{featuredPairing.wine}</span>
+          <ArrowUpRight size={28} aria-hidden="true" />
+        </a>
       </section>
     </Page>
   );
 }
 
 function PairingPage({ pairing }: { pairing: Pairing }) {
+  const { previous, next } = getAdjacentPairings(pairing.slug);
+
   return (
     <Page>
       <article className="article-page">
@@ -203,6 +209,22 @@ function PairingPage({ pairing }: { pairing: Pairing }) {
             </div>
           </aside>
         </div>
+        <nav className="article-navigation" aria-label="Pairing navigation">
+          {previous ? (
+            <a className="entry-nav previous-entry" href={`/pairings/${previous.slug}`}>
+              <span><ArrowLeft size={18} aria-hidden="true" /> Previous entry</span>
+              <strong>{previous.title}</strong>
+              <small>{previous.wine}</small>
+            </a>
+          ) : <span />}
+          {next ? (
+            <a className="entry-nav next-entry" href={`/pairings/${next.slug}`}>
+              <span>Next entry <ArrowRight size={18} aria-hidden="true" /></span>
+              <strong>{next.title}</strong>
+              <small>{next.wine}</small>
+            </a>
+          ) : <span />}
+        </nav>
         <div className="article-closing">
           <div>{pairing.closing.map((line) => <p key={line}>{line}</p>)}</div>
           <p className="signature">Ana Reinemer</p>
