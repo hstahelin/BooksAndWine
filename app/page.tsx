@@ -29,7 +29,7 @@ export default function Home() {
       <section className="hero" id="top">
         <div className="hero-kicker">
           <span>Books & Wine</span>
-          <span>Coming soon</span>
+          <span>Book &amp; wine pairings</span>
         </div>
         <div className="hero-copy">
           <p className="eyebrow">A new chapter is taking shape</p>
