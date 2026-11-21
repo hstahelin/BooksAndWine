@@ -16,8 +16,9 @@ const eslintConfig = defineConfig([
   {
     files: ["src/**/*.{ts,tsx}"],
     rules: {
-      // This is a Vite app, so Next.js image components are not available.
+      // This is a Vite app, so Next.js components are not available.
       "@next/next/no-img-element": "off",
+      "@next/next/no-html-link-for-pages": "off",
     },
   },
   {
