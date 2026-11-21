@@ -62,7 +62,6 @@ function Header() {
       </a>
       <nav aria-label="Primary navigation">
         <a href="/journal">Journal</a>
-        <a href="/#about">About</a>
         <a className="nav-note" href="/#notify">Notify me <ArrowUpRight size={16} aria-hidden="true" /></a>
       </nav>
     </header>
