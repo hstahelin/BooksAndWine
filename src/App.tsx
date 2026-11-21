@@ -147,7 +147,6 @@ function PairingCard({ pairing }: { pairing: Pairing }) {
           <strong>{pairing.wine}</strong>
         </div>
       </div>
-      <p className="card-copy">{pairing.paragraphs[0]}</p>
       <a className="text-link" href={`/pairings/${pairing.slug}`}>Read the pairing <ArrowUpRight size={18} aria-hidden="true" /></a>
     </article>
   );
@@ -160,9 +159,6 @@ function JournalPage() {
         <div><p className="section-label">The journal</p><h1>More from<br /><em>the table.</em></h1></div>
         <p>Thoughtful books, memorable bottles, and the conversations that begin when the two meet.</p>
       </section>
-      <section className="journal-grid" aria-label="Pairings">
-        {pairings.filter((pairing) => pairing.slug !== featuredPairing.slug).map((pairing) => <PairingCard pairing={pairing} key={pairing.slug} />)}
-      </section>
       <section className="featured-return">
         <p className="section-label">Featured</p>
         <a href={`/pairings/${featuredPairing.slug}`}>
@@ -170,6 +166,9 @@ function JournalPage() {
           <span className="featured-wine-name"><small>Wine pairing</small>{featuredPairing.wine}</span>
           <ArrowUpRight size={28} aria-hidden="true" />
         </a>
+      </section>
+      <section className="journal-grid" aria-label="Pairings">
+        {pairings.filter((pairing) => pairing.slug !== featuredPairing.slug).map((pairing) => <PairingCard pairing={pairing} key={pairing.slug} />)}
       </section>
     </Page>
   );
