@@ -149,7 +149,7 @@ h1 em { color: var(--wine); font-weight: 400; }
   .site-header { min-height: 72px; }
   .brand span { font-size: 1.08rem; }
   .brand img { height: 42px; width: 42px; }
-  nav > a:not(.nav-note) { display: none; }
+  .site-header nav > a:not(.nav-note) { display: none; }
   .hero { grid-template-columns: 1fr 72px; min-height: 820px; }
   .hero-copy { padding: 126px 22px 68px; }
   h1 { font-size: clamp(3.5rem, 15.5vw, 5.5rem); }
