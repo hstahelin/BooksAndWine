@@ -86,22 +86,6 @@ function Page({ children }: { children: ReactNode }) {
   return <main><Header />{children}<Footer /></main>;
 }
 
-function PairingEmblem({ compact = false }: { compact?: boolean }) {
-  return (
-    <svg className={`pairing-emblem ${compact ? "is-compact" : ""}`} viewBox="0 0 220 160" role="img" aria-label="A book beside a wine glass">
-      <g className="emblem-book">
-        <path d="M22 22h67c12 0 21 9 21 21v91H43c-12 0-21-9-21-21V22Z" />
-        <path d="M110 43c0-12 9-21 21-21h35v112h-35c-12 0-21 9-21 21V43Z" />
-        <path d="M38 47h52M38 67h42" />
-      </g>
-      <g className="emblem-wine">
-        <path d="M146 30h51l-5 44c-2 19-11 29-21 29s-19-10-21-29l-4-44Z" />
-        <path d="M171 103v36M153 140h36M151 67h42" />
-      </g>
-    </svg>
-  );
-}
-
 function HomePage() {
   return (
     <Page>
@@ -115,7 +99,6 @@ function HomePage() {
               <p className="feature-byline">By: {featuredPairing.author}</p>
             </div>
             <div className="feature-wine">
-              <PairingEmblem compact />
               <span>Wine pairing</span>
               <strong>{featuredPairing.wine}</strong>
             </div>
@@ -160,7 +143,6 @@ function PairingCard({ pairing }: { pairing: Pairing }) {
           <p className="card-byline">By: {pairing.author}</p>
         </div>
         <div className="card-wine">
-          <PairingEmblem compact />
           <span>Wine pairing</span>
           <strong>{pairing.wine}</strong>
         </div>
@@ -203,7 +185,6 @@ function PairingPage({ pairing }: { pairing: Pairing }) {
               <p className="article-byline">By: {pairing.author}</p>
             </div>
             <div className="article-wine-panel">
-              <PairingEmblem />
               <p className="section-label">The wine</p>
               <h2>{pairing.wine}</h2>
             </div>
@@ -216,7 +197,6 @@ function PairingPage({ pairing }: { pairing: Pairing }) {
           <aside className="article-visual" aria-label="Book and wine pairing visual">
             <div className="visual-frame">
               <span className="visual-number">{pairing.number}</span>
-              <PairingEmblem />
               <p>{pairing.title}</p>
               <i>&amp;</i>
               <strong>{pairing.wine}</strong>
